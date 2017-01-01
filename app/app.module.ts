@@ -10,6 +10,7 @@ import { NavbarComponent }  from './components/navbar/navbar.component';
 import { AboutComponent }  from './components/about/about.component';
 import { SearchComponent }  from './components/search/search.component';
 import { ArtistComponent }  from './components/artist/artist.component';
+import { AlbumComponent }  from './components/album/album.component';
 
 import { SpotifyService }  from './services/spotify.service';
 
@@ -21,6 +22,7 @@ import { SpotifyService }  from './services/spotify.service';
     RouterModule.forRoot([
       {path: 'search', component: SearchComponent},
       {path: 'artist/:id', component: ArtistComponent},
+      {path: 'album/:id', component: AlbumComponent},
       {path: 'about', component: AboutComponent},
       {path: '', redirectTo : 'search', pathMatch : 'full'},
       {path: '**', redirectTo : 'about', pathMatch: 'full'}
@@ -31,6 +33,7 @@ import { SpotifyService }  from './services/spotify.service';
     NavbarComponent,
     AboutComponent,
     ArtistComponent,
+    AlbumComponent,
     SearchComponent
   ],
   providers: [

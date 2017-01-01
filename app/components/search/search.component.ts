@@ -21,12 +21,10 @@ export class SearchComponent implements OnInit {
     }
 
     searchMusic() {
-        console.log('Searching Spotify for (' + this.searchString + ')');
-
         this._spotifyService.searchArtists(this.searchString)
-            .subscribe(
-                res => { console.log(res); this.artists = res.artists.items; },
-                err => { console.log(err) }
-            )        
+            .subscribe( 
+                (artists) => {this.artists = artists}, 
+                (err) => {console.log('Error (Search Component, searchArtists):', err)} 
+            );        
     }
 }

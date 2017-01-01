@@ -3,20 +3,18 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
-import { TArtist } from '../../models/artist.interface';
 import { TAlbum } from '../../models/album.interface';
 
 import { SpotifyService } from '../../services/spotify.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'artist',
-  templateUrl: 'artist.component.html'
+  selector: 'album',
+  templateUrl: 'album.component.html'
 })
-export class ArtistComponent implements OnInit {
+export class AlbumComponent implements OnInit {
 
-  artist : TArtist;
-  albums : TAlbum[];
+  album : TAlbum;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,18 +26,12 @@ export class ArtistComponent implements OnInit {
     this._route.params
       .map( params => params["id"])
       .subscribe(
-        (artistId) => {
+        (albumId) => {
 
-          this._spotifyService.getArtist(artistId)
+          this._spotifyService.getAlbum(albumId)
             .subscribe( 
-              (artist) => { this.artist = artist },
-              (err) => { console.log('Error (Artist, getArtists):', err) }
-          );
-
-          this._spotifyService.getAlbums(artistId)
-            .subscribe( 
-              (albums) => { this.albums = albums },
-              (err) => { console.log('Error (Artist, getAlbums):', err) }
+              (album) => { this.album = album },
+              (err) => { console.log('Error (Album, getAlbum):', err) }
           );
 
         },
